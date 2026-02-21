@@ -1,0 +1,13 @@
+project_id = "yvfytoyttcsophhfxynd"
+
+[functions.firecrawl-scrape]
+verify_jwt = false
+
+[functions.luse-price-scraper]
+verify_jwt = false
+
+[functions.eodhd-stock-data]
+verify_jwt = false
+
+[functions.luse-combined-fetcher]
+verify_jwt = false

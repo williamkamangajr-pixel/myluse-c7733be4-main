@@ -1,0 +1,604 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MyLuSE - Premium Design System
+   SimplyWall.st inspired with copper/bronze accents
+   All colors MUST be HSL
+*/
+
+@layer base {
+  :root {
+    /* Core Palette - Deep Charcoal with Copper Accents */
+    --background: 220 15% 8%;
+    --foreground: 40 15% 95%;
+    
+    --card: 220 15% 11%;
+    --card-foreground: 40 12% 95%;
+    
+    --popover: 220 15% 10%;
+    --popover-foreground: 40 12% 95%;
+    
+    /* Primary - Copper/Bronze */
+    --primary: 25 75% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Warm Gray */
+    --secondary: 220 12% 16%;
+    --secondary-foreground: 40 15% 95%;
+    
+    /* Muted */
+    --muted: 220 12% 14%;
+    --muted-foreground: 220 10% 55%;
+    
+    /* Accent - Copper Glow */
+    --accent: 30 80% 52%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Semantic Colors */
+    --success: 152 69% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    
+    /* Form Elements */
+    --border: 220 12% 18%;
+    --input: 220 12% 14%;
+    --ring: 25 75% 50%;
+    
+    /* Border Radius */
+    --radius: 1rem;
+    
+    /* Premium Shadows */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 4px 16px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 8px 32px hsl(0 0% 0% / 0.6);
+    --shadow-copper: 0 4px 24px hsl(25 75% 50% / 0.2);
+    --shadow-glow: 0 0 40px hsl(25 75% 50% / 0.25);
+    --shadow-copper-intense: 0 0 20px hsl(25 75% 50% / 0.4);
+    
+    /* Chart Colors */
+    --chart-1: 25 75% 50%;
+    --chart-2: 152 69% 36%;
+    --chart-3: 45 85% 55%;
+    --chart-4: 200 70% 50%;
+    --chart-5: 280 65% 60%;
+    
+    /* Snowflake Chart Specific */
+    --snowflake-value: 25 75% 50%;
+    --snowflake-growth: 152 69% 40%;
+    --snowflake-health: 200 60% 55%;
+    --snowflake-dividends: 30 85% 52%;
+    --snowflake-performance: 280 50% 55%;
+    
+    /* Zambian Colors */
+    --zambia-green: 145 90% 30%;
+    --zambia-orange: 30 95% 50%;
+    --zambia-red: 0 80% 45%;
+    --zambia-black: 0 0% 8%;
+    
+    /* Sidebar */
+    --sidebar-background: 220 15% 9%;
+    --sidebar-foreground: 40 12% 90%;
+    --sidebar-primary: 25 75% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 14%;
+    --sidebar-accent-foreground: 40 12% 95%;
+    --sidebar-border: 220 12% 16%;
+    --sidebar-ring: 25 75% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Tabular numbers for financial figures */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Premium Card - Main card styling */
+  .premium-card {
+    @apply relative overflow-hidden rounded-2xl border border-border/50 bg-card p-4 transition-all duration-300;
+  }
+  
+  .premium-card:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: var(--shadow-copper);
+  }
+  
+  /* Zambian Flag Themed Card - Subtle blurred with green glow */
+  .zambian-card {
+    @apply relative overflow-hidden rounded-2xl p-4;
+    /* Dark base with subtle green tint */
+    background: linear-gradient(
+      145deg,
+      hsl(145 40% 12%) 0%,
+      hsl(145 30% 10%) 60%,
+      hsl(30 20% 12%) 100%
+    );
+  }
+  
+  .zambian-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Subtle blurred flag colors - very understated */
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 20%, hsl(145 60% 25% / 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, hsl(30 70% 35% / 0.25) 0%, transparent 40%),
+      radial-gradient(ellipse 50% 30% at 90% 50%, hsl(0 50% 30% / 0.2) 0%, transparent 40%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  
+  .zambian-card::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    /* Green glow that flows around the card */
+    background: linear-gradient(
+      90deg,
+      hsl(145 70% 40% / 0.7) 0%,
+      hsl(145 60% 35% / 0.3) 25%,
+      hsl(145 70% 45% / 0.6) 50%,
+      hsl(145 60% 35% / 0.3) 75%,
+      hsl(145 70% 40% / 0.7) 100%
+    );
+    background-size: 200% 100%;
+    animation: green-glow-flow 2.5s linear infinite;
+    z-index: -1;
+    filter: blur(6px);
+  }
+  
+  @keyframes green-glow-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  
+  /* Premium Zambian Wallet Card - Full flag colors with intense glow */
+  .zambian-premium-card {
+    @apply relative overflow-hidden rounded-2xl p-5;
+    /* Rich dark base with flag color gradients */
+    background: linear-gradient(
+      135deg,
+      hsl(145 50% 15%) 0%,
+      hsl(0 0% 10%) 35%,
+      hsl(0 0% 8%) 50%,
+      hsl(0 0% 10%) 65%,
+      hsl(25 50% 15%) 100%
+    );
+  }
+  
+  .zambian-premium-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Full Zambian flag colors - Green, Orange, Red, Black */
+    background: 
+      /* Green glow top-left */
+      radial-gradient(ellipse 80% 80% at 0% 0%, hsl(145 80% 30% / 0.6) 0%, transparent 50%),
+      /* Orange glow center */
+      radial-gradient(ellipse 60% 60% at 50% 50%, hsl(30 90% 45% / 0.25) 0%, transparent 40%),
+      /* Red glow bottom-right */
+      radial-gradient(ellipse 70% 70% at 100% 100%, hsl(0 70% 35% / 0.35) 0%, transparent 45%),
+      /* Eagle gold shimmer */
+      radial-gradient(ellipse 40% 40% at 85% 20%, hsl(45 100% 50% / 0.15) 0%, transparent 40%);
+    filter: blur(30px);
+    pointer-events: none;
+    animation: premium-shimmer 8s ease-in-out infinite;
+  }
+  
+  @keyframes premium-shimmer {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  
+  .zambian-premium-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    /* Premium multi-color flowing glow - all Zambian colors */
+    background: linear-gradient(
+      90deg,
+      hsl(145 80% 35% / 0.8) 0%,
+      hsl(145 60% 40% / 0.4) 15%,
+      hsl(30 90% 50% / 0.6) 35%,
+      hsl(0 70% 45% / 0.5) 55%,
+      hsl(0 60% 40% / 0.3) 70%,
+      hsl(145 70% 40% / 0.4) 85%,
+      hsl(145 80% 35% / 0.8) 100%
+    );
+    background-size: 300% 100%;
+    animation: premium-glow-flow 4s linear infinite;
+    z-index: -1;
+    filter: blur(8px);
+  }
+  
+  @keyframes premium-glow-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+  
+  /* Mobile nav animated glow */
+  .nav-glow-mobile {
+    @apply relative;
+  }
+  
+  .nav-glow-mobile.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+    background: hsl(var(--primary));
+    box-shadow: 
+      0 0 8px hsl(var(--primary) / 0.8),
+      0 0 16px hsl(var(--primary) / 0.5);
+    animation: nav-glow-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes nav-glow-pulse {
+    0%, 100% { 
+      opacity: 0.7;
+      box-shadow: 0 0 6px hsl(var(--primary) / 0.6), 0 0 12px hsl(var(--primary) / 0.3);
+    }
+    50% { 
+      opacity: 1;
+      box-shadow: 0 0 12px hsl(var(--primary) / 1), 0 0 24px hsl(var(--primary) / 0.6);
+    }
+  }
+  
+  /* Coming Soon Card - Bronze/Copper Theme with Constant Glow */
+  .coming-soon-card {
+    @apply relative overflow-hidden rounded-2xl border border-primary/30 p-6;
+    background: 
+      radial-gradient(ellipse 100% 80% at 50% 20%, hsl(25 75% 50% / 0.2) 0%, transparent 60%),
+      hsl(var(--card));
+  }
+  
+  /* Market Closed Glow Animation */
+  .market-closed-glow {
+    @apply relative;
+  }
+  
+  .market-closed-glow::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(var(--warning) / 0.5) 0%, transparent 70%);
+    animation: market-glow-pulse 1.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .market-closed-glow::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--warning) / 0.6);
+    animation: market-ring-pulse 1.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes market-glow-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% { 
+      transform: scale(1.3);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes market-ring-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% { 
+      transform: scale(1.15);
+      opacity: 0.9;
+    }
+  }
+  
+  .coming-soon-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(25 75% 50% / 0.4), hsl(30 80% 45% / 0.2), hsl(25 75% 50% / 0.4));
+    animation: glow-pulse 3s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% { 
+      opacity: 0.6;
+      filter: blur(8px);
+    }
+    50% { 
+      opacity: 1;
+      filter: blur(12px);
+    }
+  }
+  
+  /* Glowing Checkbox Animation - Constant Glow */
+  .checkbox-glow {
+    @apply relative;
+  }
+  
+  .checkbox-glow::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(152 69% 45% / 0.5) 0%, transparent 70%);
+    animation: checkbox-glow-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .checkbox-glow::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid hsl(152 69% 50% / 0.6);
+    animation: checkbox-ring-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes checkbox-glow-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% { 
+      transform: scale(1.4);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes checkbox-ring-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% { 
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+  }
+  
+  /* Processing Spinner with Glow */
+  .processing-spinner {
+    @apply relative;
+  }
+  
+  .processing-spinner::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: hsl(var(--primary));
+    border-right-color: hsl(var(--primary) / 0.5);
+    animation: spinner-rotate 1s linear infinite;
+  }
+  
+  .processing-spinner::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 60%);
+    animation: spinner-glow 1.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes spinner-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes spinner-glow {
+    0%, 100% { 
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  /* Glass Morphism Effect */
+  .glass {
+    backdrop-filter: blur(12px) saturate(150%);
+    background: hsl(var(--card) / 0.85);
+    border: 1px solid hsl(var(--primary) / 0.25);
+  }
+  
+  /* Touch Feedback */
+  .touch-press:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  
+  .card-press:active {
+    transform: scale(0.98) translateY(1px);
+  }
+  
+  /* Number Display - Financial figures */
+  .number-display {
+    @apply font-semibold tracking-tight tabular-nums;
+  }
+  
+  /* Semantic Color Classes */
+  .text-positive {
+    color: hsl(var(--success));
+  }
+  
+  .text-negative {
+    color: hsl(var(--destructive));
+  }
+  
+  /* Copper Glow Effects */
+  .glow-hover {
+    @apply relative transition-all duration-300;
+  }
+  
+  .glow-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 
+      inset 0 0 12px hsl(var(--primary) / 0.3),
+      0 0 16px hsl(var(--primary) / 0.2);
+    pointer-events: none;
+  }
+  
+  .glow-hover:hover::before,
+  .glow-hover:focus::before,
+  .glow-hover.active::before {
+    opacity: 1;
+  }
+  
+  /* Tab Glow Effect */
+  .tab-glow {
+    @apply relative transition-all duration-300;
+  }
+  
+  .tab-glow::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    border-radius: 2px;
+    background: hsl(var(--primary));
+    opacity: 0;
+    box-shadow: 
+      0 0 8px hsl(var(--primary) / 0.6),
+      0 0 16px hsl(var(--primary) / 0.4);
+    transition: opacity 0.3s ease;
+  }
+  
+  .tab-glow:hover::after,
+  .tab-glow.active::after {
+    opacity: 1;
+  }
+  
+  /* Gradient Overlays */
+  .gradient-copper-glow {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(25 75% 50% / 0.2),
+      transparent
+    );
+  }
+  
+  /* Stagger Animation Pattern */
+  .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+  .stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.35);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.55);
+  }
+
+  /* Logo Glow - Premium animated glow effect */
+  .logo-glow {
+    background: radial-gradient(
+      circle,
+      hsl(25 75% 50% / 0.5) 0%,
+      hsl(30 80% 45% / 0.3) 40%,
+      transparent 70%
+    );
+    filter: blur(12px);
+    animation: logo-glow-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes logo-glow-pulse {
+    0%, 100% { 
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+}
+
+@layer utilities {
+  /* Safe Area Insets for Mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
